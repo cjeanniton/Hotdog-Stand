@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Joes Hotdogs</title>
+	
+<style>
+	.big-spacing {margin-top: 30px}
+	.small-spacing{margin-top: 20px}
+	
+	.name {font-size: 50px; text-align: center; font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif"; text-decoration: underline; color: #02A553}
+	body {background-color: #343534}
+	
+	.instructions {font-size: 27px; color: #D1D1D1; font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif"; display: block; border: thick solid #02A553; border-radius: 10px; height: 600px; margin: 10px}
+	
+	.products, .pricing {font-size: 20px}
+</style>
+
+<script language="javascript">
+			function calctotal(){
+				var hotdogs, fries, sodas, total, tax, totalplustax;
+				hotdogs = document.getElementById("hotdogs").value;
+				fries = document.getElementById("fries").value;
+				sodas = document.getElementById("sodas").value;
+				
+				total = (parseInt(hotdogs) * 3.25) + (parseInt(fries) * 2) + (parseInt(sodas) * 1.5);
+				tax = Math.round((total * 0.0625) * 100.0) / 100.0;
+				totalplustax = Math.round((total + tax) * 100.0) / 100.0;
+				
+				if (total >= 20){
+					totalplustax = Math.round((totalplustax - (totalplustax * 0.1)) * 100.0) / 100.0;
+					alert("You qualify for a 10% discount! Find your total and sales tax below.");
+				}else{
+					alert("Find your total and sales tax below.");
+				}
+				
+				document.getElementById ("tax").value=tax;
+				document.getElementById ("totalplustax").value=totalplustax;
+			}
+</script>
+	
+<div class="name">Welcome To Joe's Hotdog Stand!</div>
+</head>
+
+<body>
+	<div class="big-spacing"></div>
+	<div class="instructions">
+		To place an order online, please fill out the form below:
+		<div class="big-spacing"></div>
+		
+		Price List: <br>
+		<div class="small-spacing"></div>
+		<div class="pricing">
+			Hotdogs: $3.25 <br>
+			Fries: $2.00 <br>
+			Soda: $1.50 <br>
+			<br>
+			* A 10% discount will be applied to orders over $20 * <br>
+		</div>
+		
+		<div class="big-spacing"></div>
+		
+		<div class="products">
+			<form action="">
+			
+			<div class="hotdogs">
+				<label for="hotdogs">Enter Hotdog Quantity:</label><br>
+				<input type="text" id="hotdogs" name="hotdogs" value="0"><br>
+			</div>
+			
+			<div class="small-spacing"></div>
+			
+			<div class="fries">
+				<label for="fries">Enter Fries Quantity:</label><br>
+				<input type="text" id="fries" name="fries" value="0"><br>
+			</div>
+			
+			<div class="small-spacing"></div>
+			
+			<div class="soda">
+				<label for="sodas">Enter Soda Quantity:</label><br>
+				<input type="text" id="sodas" name="sodas" value="0"><br>
+			</div>
+				
+			<button type="button" onclick="calctotal()">Order</button>
+			</form>
+		</div>
+		
+		<div class="big-spacing"></div>
+		
+		<div class="tax">
+			Tax: $ 
+			<input type="text" id="tax" name="tax" value="0" readonly>
+		</div>
+		
+		<div class="small-spacing"></div>
+		
+		<div class="total">
+			Total: $
+			<input type="text" id="totalplustax" name="totalplustax" value="0" readonly>
+			
+		</div>
+	</div>
+</body>
+</html>
